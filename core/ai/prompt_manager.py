@@ -9,6 +9,7 @@ load_dotenv()
 API_KEY = os.getenv("OPENAI_API_KEY")
 client = OpenAI(api_key=API_KEY)
 
+
 class PromptManager:
     def __init__(self, messages=[], model="gpt-4.1-mini-2025-04-14"):
         self.messages = messages
