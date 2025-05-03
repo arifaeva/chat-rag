@@ -6,4 +6,34 @@
         <input type="file" name="file" id="file" accept="pdf"/>
         <button type="submit">Upload</button>
     </form>
+
+    <div id="notifications"></div>
+
+    <script>
+        const ws = new WebSocket("ws://localhost:8000/ws/notifications/");
+
+        ws.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+
+            const type = data.message.type;
+            const content = data.message.content;
+
+            if (type === "notification") {
+                const notifContainer = document.getElementById("notifications");
+                notifContainer.innerHTML = content;
+            }
+
+            // if (type === "done") {
+            //     window.location.href = '/chat/${content}'
+            // }
+        };
+
+        ws.onopen = () => {
+            console.log("Connected");
+        };
+
+        ws.onclose = () => {
+            console.log("Disconnected")
+        };
+    </script>
 {% endblock %}
