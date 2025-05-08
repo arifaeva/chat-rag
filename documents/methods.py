@@ -1,5 +1,5 @@
 from langchain_community.embeddings import OpenAIEmbeddings
-from langchain_experimental import SemanticChunker
+from langchain_experimental.text_splitter import SemanticChunker
 
 from core.ai.chromadb import chroma, openai_ef
 from core.ai.mistral import mistral

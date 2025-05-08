@@ -11,3 +11,13 @@ def send_notification(notification_type, content):
             "message": {"content": content, "type": notification_type},
         },
     )
+
+def send_chat_message(message):
+    channel = get_channel_layer()
+    async_to_sync(channel.group_send)(
+        "chat",
+        {
+            "type": "send_message",
+            "message": message
+        },
+    )
