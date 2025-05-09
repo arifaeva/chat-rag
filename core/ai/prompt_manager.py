@@ -18,6 +18,9 @@ class PromptManager:
     def add_message(self, role, content):
         self.messages.append({"role": role, "content": content})
 
+    def add_messages(self, messages):
+        self.messages.extend(messages)
+
     def set_messages(self, messages):
         self.messages = messages
 
